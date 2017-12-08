@@ -6,7 +6,10 @@ import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { MenuComponent } from './menu/menu.component';
-import { MatListModule, MatToolbarModule} from "@angular/material";
+import {
+  MatCardModule, MatGridListModule, MatGridTile, MatGridTileFooterCssMatStyler, MatListModule,
+  MatToolbarModule
+} from "@angular/material";
 
 
 @NgModule({
@@ -19,7 +22,9 @@ import { MatListModule, MatToolbarModule} from "@angular/material";
     BrowserAnimationsModule,
     FlexLayoutModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    MatGridListModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
