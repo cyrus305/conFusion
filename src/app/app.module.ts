@@ -10,12 +10,14 @@ import {
   MatCardModule, MatGridListModule, MatGridTile, MatGridTileFooterCssMatStyler, MatListModule,
   MatToolbarModule
 } from "@angular/material";
+import { DishdetailComponent } from './dishdetail/dishdetail.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent
+    MenuComponent,
+    DishdetailComponent
   ],
   imports: [
     BrowserModule,
