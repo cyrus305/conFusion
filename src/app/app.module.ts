@@ -8,7 +8,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {MenuComponent} from './menu/menu.component';
 import {
   MatButtonModule,
-  MatCardModule, MatGridListModule, MatListModule,
+  MatCardModule, MatCheckboxModule, MatDialogModule, MatGridListModule, MatInputModule, MatListModule,
   MatToolbarModule
 } from "@angular/material";
 import {DishdetailComponent} from './dishdetail/dishdetail.component';
@@ -21,6 +21,8 @@ import {ContactComponent} from './contact/contact.component';
 import {AppRoutingModule} from "./app-routing/app-routing.module";
 import {PromotionService} from "./services/promotion.service";
 import {LeaderService} from "./services/leader.service";
+import { LoginComponent } from './login/login.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -32,18 +34,26 @@ import {LeaderService} from "./services/leader.service";
     FooterComponent,
     AboutComponent,
     HomeComponent,
-    ContactComponent
+    ContactComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
     FlexLayoutModule,
     MatToolbarModule,
     MatListModule,
     MatGridListModule,
     MatCardModule,
     MatButtonModule,
-    AppRoutingModule
+    MatDialogModule,
+    MatInputModule,
+    MatCheckboxModule
+  ],
+  entryComponents: [
+    LoginComponent
   ],
   providers: [DishService, PromotionService, LeaderService],
   bootstrap: [AppComponent]
