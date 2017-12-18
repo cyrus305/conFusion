@@ -11,7 +11,7 @@ import {
   MatCardModule, MatCheckboxModule, MatDialogModule, MatGridListModule, MatInputModule, MatListModule, MatOptionModule,
   MatSlideToggleModule,
   MatToolbarModule,
-  MatSelectModule
+  MatSelectModule, MatProgressSpinnerModule
 } from "@angular/material";
 import {DishdetailComponent} from './dishdetail/dishdetail.component';
 import {DishService} from "./services/dish.service";
@@ -56,7 +56,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     MatCheckboxModule,
     MatSlideToggleModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressSpinnerModule
   ],
   entryComponents: [
     LoginComponent
