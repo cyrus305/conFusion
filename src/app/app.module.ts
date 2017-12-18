@@ -8,8 +8,10 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {MenuComponent} from './menu/menu.component';
 import {
   MatButtonModule,
-  MatCardModule, MatCheckboxModule, MatDialogModule, MatGridListModule, MatInputModule, MatListModule,
-  MatToolbarModule
+  MatCardModule, MatCheckboxModule, MatDialogModule, MatGridListModule, MatInputModule, MatListModule, MatOptionModule,
+  MatSlideToggleModule,
+  MatToolbarModule,
+  MatSelectModule
 } from "@angular/material";
 import {DishdetailComponent} from './dishdetail/dishdetail.component';
 import {DishService} from "./services/dish.service";
@@ -21,8 +23,8 @@ import {ContactComponent} from './contact/contact.component';
 import {AppRoutingModule} from "./app-routing/app-routing.module";
 import {PromotionService} from "./services/promotion.service";
 import {LeaderService} from "./services/leader.service";
-import { LoginComponent } from './login/login.component';
-import {FormsModule} from "@angular/forms";
+import {LoginComponent} from './login/login.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -40,6 +42,7 @@ import {FormsModule} from "@angular/forms";
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FlexLayoutModule,
@@ -50,7 +53,10 @@ import {FormsModule} from "@angular/forms";
     MatButtonModule,
     MatDialogModule,
     MatInputModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSlideToggleModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   entryComponents: [
     LoginComponent
