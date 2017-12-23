@@ -25,6 +25,8 @@ import {PromotionService} from "./services/promotion.service";
 import {LeaderService} from "./services/leader.service";
 import {LoginComponent} from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpModule} from "@angular/http";
+import {baseURL} from "./shared/baseUrl";
 
 
 @NgModule({
@@ -46,6 +48,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     BrowserAnimationsModule,
     AppRoutingModule,
     FlexLayoutModule,
+    HttpModule,
     MatToolbarModule,
     MatListModule,
     MatGridListModule,
@@ -63,7 +66,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
   entryComponents: [
     LoginComponent
   ],
-  providers: [DishService, PromotionService, LeaderService],
+  providers: [DishService, PromotionService, LeaderService,
+    {provide: 'BaseURL', useValue: baseURL}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

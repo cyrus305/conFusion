@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {Dish} from "../shared/dish";
 import {DishService} from "../services/dish.service";
 import {ActivatedRoute, Params} from "@angular/router";
@@ -44,7 +44,8 @@ export class DishdetailComponent implements OnInit {
   constructor(private dishservice: DishService,
               private route: ActivatedRoute,
               private location: Location,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              @Inject('BaseURL') private BaseURL) {
     this.createCommentForm();
   }
 
