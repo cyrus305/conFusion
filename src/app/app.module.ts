@@ -30,6 +30,7 @@ import {baseURL} from "./shared/baseUrl";
 import {ProcessHttpmsgService} from "./services/process-httpmsg.service";
 import {RestangularConfigFactory} from "./services/restConfig";
 import {RestangularModule} from "ngx-restangular";
+import { HighlightDirective } from './directives/highlight.directive';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import {RestangularModule} from "ngx-restangular";
     AboutComponent,
     HomeComponent,
     ContactComponent,
-    LoginComponent
+    LoginComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
