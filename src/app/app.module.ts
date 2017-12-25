@@ -28,6 +28,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {baseURL} from "./shared/baseUrl";
 import {ProcessHttpmsgService} from "./services/process-httpmsg.service";
+import {RestangularConfigFactory} from "./services/restConfig";
+import {RestangularModule} from "ngx-restangular";
 
 
 @NgModule({
@@ -50,6 +52,7 @@ import {ProcessHttpmsgService} from "./services/process-httpmsg.service";
     AppRoutingModule,
     FlexLayoutModule,
     HttpModule,
+    RestangularModule.forRoot(RestangularConfigFactory),
     MatToolbarModule,
     MatListModule,
     MatGridListModule,
