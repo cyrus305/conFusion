@@ -1,23 +1,27 @@
 import {Injectable} from '@angular/core';
 import {Promotion} from "../shared/promotion";
 import {PROMOTIONS} from "../../assets/resources/promotions";
+import {Observable} from "rxjs/Observable";
+import {Restangular} from "ngx-restangular";
 
 @Injectable()
 export class PromotionService {
 
-  constructor() {
+  constructor(private restangular: Restangular) {
   }
 
-  getPromotions(): Promotion[] {
-    return PROMOTIONS;
+  getPromotions(): Observable<Promotion[]> {
+    return this.restangular.all('promotions').getList();
   }
 
-  getPromotion(id: number): Promotion {
-    return PROMOTIONS.filter((promo) => (promo.id === id))[0];
+  getPromotion(id: number): Observable<Promotion> {
+    return this.restangular.one('promotions', id).get();
   }
 
-  getFeaturedPromotion(): Promotion {
-    return PROMOTIONS.filter((promotion) => promotion.featured)[0];
+  getFeaturedPromotion(): Observable<Promotion> {
+    return this.restangular.all('promotions').getList({
+      featured: true
+    }).map(promotions => promotions[0]);
   }
-
 }
+

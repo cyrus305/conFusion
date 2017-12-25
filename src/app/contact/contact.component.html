@@ -8,7 +8,6 @@
       <hr>
     </div>
   </div>
-
   <div fxFlex>
     <h3>Location Information</h3>
     <div fxLayout="column" fxLayout.gt-sm="row">
@@ -39,63 +38,90 @@
   <div fxFlex fxFlexOffset="20px" class="form-size">
     <h3>Send us your Feedback</h3>
     <p>{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p>
-    <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
-      <p>
-        <mat-input-container class="half-width"
-                            dividerColor="{{(formErrors.firstname) ? 'warn' : 'primary'}}">
-          <input matInput formControlName="firstname" placeholder="First Name" type="text" required>
-          <mat-hint>
+    <div *ngIf="!feedback && !feedbackFromServer" [@expand]>
+
+      <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+        <p>
+          <mat-input-container class="half-width"
+                               dividerColor="{{(formErrors.firstname) ? 'warn' : 'primary'}}">
+            <input matInput formControlName="firstname" placeholder="First Name" type="text" required>
+            <mat-hint>
                 <span [hidden]="!(formErrors.firstname)">
                   {{formErrors.firstname}}</span>
-          </mat-hint>
-        </mat-input-container>
-        <mat-input-container class="half-width"
-                            dividerColor="{{(formErrors.lastname) ? 'warn' : 'primary'}}">
-          <input matInput formControlName="lastname" placeholder="Last Name" type="text" required>
-          <mat-hint>
+            </mat-hint>
+          </mat-input-container>
+          <mat-input-container class="half-width"
+                               dividerColor="{{(formErrors.lastname) ? 'warn' : 'primary'}}">
+            <input matInput formControlName="lastname" placeholder="Last Name" type="text" required>
+            <mat-hint>
                 <span [hidden]="!(formErrors.lastname)">
                   {{formErrors.lastname}}</span>
-          </mat-hint>
-        </mat-input-container>
-      </p>
-      <p>
-        <mat-input-container class="half-width"
-                            dividerColor="{{(formErrors.telnum) ? 'warn' : 'primary'}}">
-          <input matInput formControlName="telnum" placeholder="Tel. Number" type="tel" pattern="[0-9]*" required>
-          <mat-hint>
+            </mat-hint>
+          </mat-input-container>
+        </p>
+        <p>
+          <mat-input-container class="half-width"
+                               dividerColor="{{(formErrors.telnum) ? 'warn' : 'primary'}}">
+            <input matInput formControlName="telnum" placeholder="Tel. Number" type="tel" pattern="[0-9]*" required>
+            <mat-hint>
                 <span [hidden]="!(formErrors.telnum)">
                   {{formErrors.telnum}}</span>
-          </mat-hint>
-        </mat-input-container>
-        <mat-input-container class="half-width"
-                            dividerColor="{{(formErrors.email) ? 'warn' : 'primary'}}">
-          <input matInput formControlName="email" placeholder="Email" type="email" email required>
-          <mat-hint>
+            </mat-hint>
+          </mat-input-container>
+          <mat-input-container class="half-width"
+                               dividerColor="{{(formErrors.email) ? 'warn' : 'primary'}}">
+            <input matInput formControlName="email" placeholder="Email" type="email" email required>
+            <mat-hint>
                 <span [hidden]="!(formErrors.email)">
                   {{formErrors.email}}</span>
-          </mat-hint>
-        </mat-input-container>
-      </p>
-      <table class="form-size">
-        <td>
-          <mat-slide-toggle formControlName="agree">May we contact you?</mat-slide-toggle>
-        </td>
-        <td>
-          <mat-select placeholder="How?" formControlName="contacttype">
-            <mat-option *ngFor="let ctype of contactType" [value]="ctype">
-              {{ ctype }}
-            </mat-option>
-          </mat-select>
-        </td>
-      </table>
-      <p>
-        <mat-input-container class="full-width">
-          <textarea matInput formControlName="message" placeholder="Your Feedback" rows=12></textarea>
-        </mat-input-container>
-      </p>
-      <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="feedbackForm.invalid">
-        Submit
-      </button>
-    </form>
+            </mat-hint>
+          </mat-input-container>
+        </p>
+        <table class="form-size">
+          <td>
+            <mat-slide-toggle formControlName="agree">May we contact you?</mat-slide-toggle>
+          </td>
+          <td>
+            <mat-select placeholder="How?" formControlName="contacttype">
+              <mat-option *ngFor="let ctype of contactType" [value]="ctype">
+                {{ ctype }}
+              </mat-option>
+            </mat-select>
+          </td>
+        </table>
+        <p>
+          <mat-input-container class="full-width">
+            <textarea matInput formControlName="message" placeholder="Your Feedback" rows=12></textarea>
+          </mat-input-container>
+        </p>
+        <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="feedbackForm.invalid">
+          Submit
+        </button>
+      </form>
+    </div>
+    <div *ngIf="feedback && !feedbackFromServer && !feedbackErrorMess">
+      <mat-spinner>
+      </mat-spinner>
+      <h4>Submitting Form ...</h4>
+    </div>
+    <div fxflex *ngIf="feedbackFromServer" [@expand]>
+      <div>
+        <h3>Your Submission</h3>
+        <h4>First Name: {{feedback.firstname}}</h4>
+        <h4>Last Name: {{feedback.lastname}}</h4>
+        <h4>Tel. Number: {{feedback.telnum}}</h4>
+        <h4>Email: {{feedback.email}}</h4>
+        <h4>Contact you?: {{feedback.agree}}</h4>
+        <h4>How?: {{feedback.contacttype}}</h4>
+        <h4>Feedback: {{feedback.message}}</h4>
+      </div>
+    </div>
+
+    <div *ngIf="feedbackErrorMess">
+      <h2>Error</h2>
+      <h4>
+        {{feedbackErrorMess}}
+      </h4>
+    </div>
   </div>
 </div>
