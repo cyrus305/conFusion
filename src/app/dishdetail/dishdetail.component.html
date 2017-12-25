@@ -32,9 +32,13 @@
     </mat-card>
   </div>
 
-  <div [hidden]="dish">
+  <div [hidden]="dish || errMess">
     <mat-spinner></mat-spinner>
     <h4>Loading ... Please Wait</h4>
+  </div>
+  <div *ngIf="errMess">
+    <h2>Error</h2>
+    <h4>{{errMess}}</h4>
   </div>
 
   <div fxFlex="40" *ngIf="dish">
@@ -45,6 +49,13 @@
         <p mat-line>{{comment.rating}} Stars</p>
         <p mat-line>
           <span> -- {{comment.author}} {{comment.date | date: 'mediumDate'}}</span>
+        </p>
+      </mat-list-item>
+      <mat-list-item *ngIf="commentForm.valid">
+        <h3 matLine> {{commentForm.value.comment}} </h3>
+        <p matLine>
+          <span matLine> {{commentForm.value.rating}} Stars </span>
+          <span matLine class="demo-2"> -- {{commentForm.value.author}} </span>
         </p>
       </mat-list-item>
     </mat-list>
@@ -65,6 +76,9 @@
       <p>
         <mat-input-container class="full-width">
           <textarea matInput formControlName="comment" placeholder="Your Comment" rows=12></textarea>
+          <mat-hint>
+            <span [hidden]="!formErrors.comment">{{formErrors.comment}}</span>
+          </mat-hint>
         </mat-input-container>
       </p>
       <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="commentForm.invalid">

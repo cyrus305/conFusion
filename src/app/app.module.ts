@@ -27,6 +27,7 @@ import {LoginComponent} from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {baseURL} from "./shared/baseUrl";
+import {ProcessHttpmsgService} from "./services/process-httpmsg.service";
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import {baseURL} from "./shared/baseUrl";
     LoginComponent
   ],
   providers: [DishService, PromotionService, LeaderService,
-    {provide: 'BaseURL', useValue: baseURL}],
+    {provide: 'BaseURL', useValue: baseURL},
+    ProcessHttpmsgService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
